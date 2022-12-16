@@ -2,9 +2,9 @@ const Settings = require("../models").Settings;
 
 module.exports = function(router) {
   router.get("/settings", (req, res) => {
-    Settings.findOne({})
-      .then(physicians => {
-        res.json(physicians);
+    Settings.findOrCreate({where: {settingsId: 1}})
+      .then(settings => {
+        res.json(settings);
       })
       .catch(err => res.json(err));
   });

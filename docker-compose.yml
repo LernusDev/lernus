@@ -1,0 +1,15 @@
+services:
+  server:
+    build:
+      context: server
+    volumes:
+      - "data:/data"
+
+  client:
+    build:
+      context: client
+    links:
+      - server
+
+volumes:
+  data:
